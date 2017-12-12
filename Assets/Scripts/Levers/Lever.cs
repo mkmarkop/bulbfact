@@ -9,10 +9,11 @@ public class Lever : MonoBehaviour {
 	public delegate void toggleHandler(int valueChange);
 	public static event toggleHandler onLeverToggle;
 
-	private bool turnedOn = false;
+	private bool turnedOn;
 
 
 	void Start () {
+		turnedOn = flase;
 	}
 	
 	void Update () {
