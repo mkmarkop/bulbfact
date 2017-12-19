@@ -14,6 +14,13 @@ public class KeypadDoors : MonoBehaviour {
 	void Start () {
         enteredKey = "";
 	}
+    void OnTriggerStay(Collider other)
+    {
+        if (Input.GetButtonDown("Activate"))
+        {
+            ActivateKeypad();
+        }
+}
 
     void ActivateKeypad()
     {
@@ -21,10 +28,16 @@ public class KeypadDoors : MonoBehaviour {
         Time.timeScale = 0;
     }
 
-    void DeactivateKeypad()
+    public void DeactivateKeypad()
     {
         keypadCanvas.gameObject.SetActive(false);
         Time.timeScale = 1;
+    }
+
+    public void GetPressedKey(int number)
+    {
+        if (enteredKey.Length == 4) { return; }
+        enteredKey = enteredKey + number.ToString();
     }
 
     public void OnEnterPress()
@@ -33,13 +46,11 @@ public class KeypadDoors : MonoBehaviour {
             Door.GetComponent<Animator>().SetBool("open", true);
             DeactivateKeypad();
         }
-        else {
-            enteredKey = "";
-        }
+        enteredKey = "";
     }	
 
 	// Update is called once per frame
 	void Update () {
-       //displayKey.text = enteredKey.ToString();
+        displayKey.text = enteredKey.ToString();
 	}
 }
