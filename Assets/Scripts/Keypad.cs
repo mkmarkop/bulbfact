@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class KeypadDoors : MonoBehaviour {
-    public Component Door;
+public class Keypad : MonoBehaviour {
+    public DoorScript Door;
     public int Key;
     public Canvas keypadCanvas;
     private string enteredKey;
     public Text displayKey;
+
 
 	// Use this for initialization
 	void Start () {
@@ -18,6 +19,7 @@ public class KeypadDoors : MonoBehaviour {
     {
         if (Input.GetButtonDown("Activate"))
         {
+            if (Door.isOpen()) { return; }
             ActivateKeypad();
         }
 }
@@ -43,7 +45,7 @@ public class KeypadDoors : MonoBehaviour {
     public void OnEnterPress()
     {
         if (Key.ToString() == enteredKey){
-            Door.GetComponent<Animator>().SetBool("open", true);
+            Door.Open();
             DeactivateKeypad();
         }
         enteredKey = "";

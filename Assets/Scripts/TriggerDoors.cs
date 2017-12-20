@@ -18,8 +18,6 @@ public class TriggerDoors : MonoBehaviour {
         if (other.tag == "Player")
         {
             _animator.SetBool("open", true);
-            _boxCollider.isTrigger = false;
-            _boxCollider.size = new Vector3(6,6,1);
         }
     }
     // Update is called once per frame
