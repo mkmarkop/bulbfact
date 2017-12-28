@@ -13,7 +13,7 @@ public class Lever : MonoBehaviour {
 
 
 	void Start () {
-		_turnedOn = flase;
+		_turnedOn = false;
 	}
 	
 	void Update () {
