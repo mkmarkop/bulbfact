@@ -6,16 +6,16 @@ public class LeverSystem : MonoBehaviour {
 
 	public int targetLeverValue;
 
-	private int currentLeverValue;
-	private bool systemEnabled;
+	private int _currentLeverValue;
+	private bool _systemEnabled;
 
 	void myOnLeverToggle(int valueChange) {
-		currentLeverValue += valueChange;
+		_currentLeverValue += valueChange;
 
-		if (currentLeverValue == targetLeverValue) {
-			systemEnabled = true;
+		if (_currentLeverValue == targetLeverValue) {
+			_systemEnabled = true;
 		} else {
-			systemEnabled = false;
+			_systemEnabled = false;
 		}
 	}
 
@@ -29,7 +29,7 @@ public class LeverSystem : MonoBehaviour {
 
 	void Start () {
 		int currentLeverValue = 0;
-		systemEnabled = false;
+		_systemEnabled = false;
 	}
 	
 	void Update () {

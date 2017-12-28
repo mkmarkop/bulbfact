@@ -9,21 +9,21 @@ public class Lever : MonoBehaviour {
 	public delegate void toggleHandler(int valueChange);
 	public static event toggleHandler onLeverToggle;
 
-	private bool turnedOn;
+	private bool _turnedOn;
 
 
 	void Start () {
-		turnedOn = flase;
+		_turnedOn = flase;
 	}
 	
 	void Update () {
 	}
 		
 	public void toggleLever() {
-		turnedOn = !turnedOn;
+		_turnedOn = !_turnedOn;
 		 
 		int valueChange;
-		if (turnedOn) {
+		if (_turnedOn) {
 			valueChange = leverValue;
 		} else {
 			valueChange = -leverValue;
@@ -37,7 +37,7 @@ public class Lever : MonoBehaviour {
 	}
 
 	public bool isTurnedOn() {
-		return turnedOn;
+		return _turnedOn;
 	}
 		
 }
