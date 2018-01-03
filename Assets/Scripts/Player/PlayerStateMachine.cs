@@ -64,24 +64,34 @@ public class PlayerStateMachine : MonoBehaviour {
 			break;
 
 		case PlayerState.walkingLeft:
-			transform.Translate(playerForward * playerWalkSpeed * Time.deltaTime, Space.World);
+			walk ();
 			break;
 
 		case PlayerState.walkingRight:
-			transform.Translate(playerForward * playerWalkSpeed * Time.deltaTime, Space.World);
+			walk ();
 			break;
 
 		case PlayerState.walkingForward:
-			transform.Translate(playerForward * playerWalkSpeed * Time.deltaTime, Space.World);
+			walk ();
 			break;
 
 		case PlayerState.walkingBackward:
-			transform.Translate(playerForward * playerWalkSpeed * Time.deltaTime, Space.World);
+			walk ();
 			break;
 
 		default:
 			break;
 		}
+	}
+
+	void walk() {
+		transform.Translate(playerForward * playerWalkSpeed * Time.deltaTime, Space.World);
+	}
+
+	void faceTowards(Vector3 dir) {
+		playerAnimator.SetBool ("walking", true);
+		playerForward = dir;
+		transform.rotation = Quaternion.LookRotation (playerForward);
 	}
 
 	public void tryStateChange(PlayerState newState) {
@@ -97,27 +107,19 @@ public class PlayerStateMachine : MonoBehaviour {
 			break;
 
 		case PlayerState.walkingLeft:
-			playerAnimator.SetBool ("walking", true);
-			playerForward = -Vector3.left;
-			transform.rotation = Quaternion.LookRotation (playerForward);
+			faceTowards (-Vector3.left);
 			break;
 
 		case PlayerState.walkingRight:
-			playerAnimator.SetBool ("walking", true);
-			playerForward = -Vector3.right;
-			transform.rotation = Quaternion.LookRotation (playerForward);
+			faceTowards (-Vector3.right);
 			break;
 
 		case PlayerState.walkingForward:
-			playerAnimator.SetBool ("walking", true);
-			playerForward = Vector3.forward;
-			transform.rotation = Quaternion.LookRotation (playerForward);
+			faceTowards (Vector3.forward);
 			break;
 
 		case PlayerState.walkingBackward:
-			playerAnimator.SetBool ("walking", true);
-			playerForward = Vector3.back;
-			transform.rotation = Quaternion.LookRotation (playerForward);
+			faceTowards (Vector3.back);
 			break;
 
 		default:
