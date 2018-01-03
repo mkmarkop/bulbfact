@@ -21,5 +21,12 @@ public class PlayerController : MonoBehaviour {
 		} else if (horizontal > 0f) {
 			pMachine.tryStateChange (PlayerState.walkingForward);
 		}
+
+		float vertical = Input.GetAxis ("Vertical");
+		if (vertical < 0f) {
+			pMachine.tryStateChange (PlayerState.walkingLeft);
+		} else if (vertical > 0f) {
+			pMachine.tryStateChange (PlayerState.walkingRight);
+		}
 	}
 }

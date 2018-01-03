@@ -11,12 +11,13 @@ public class PlayerStateMachine : MonoBehaviour {
 	public float playerWalkSpeed = 1.0f;
 
 	private Vector3 playerForward;
+	private Vector3 playerOrientation;
 	private Animator playerAnimator;
 	private PlayerState currentState;
 
 	// Use this for initialization
 	void Start () {
-		playerForward = transform.forward;
+		playerForward = Vector3.forward;
 		playerAnimator = GetComponent<Animator> ();
 		currentState = PlayerState.idle;
 	}
@@ -63,21 +64,19 @@ public class PlayerStateMachine : MonoBehaviour {
 			break;
 
 		case PlayerState.walkingLeft:
+			transform.Translate(playerForward * playerWalkSpeed * Time.deltaTime, Space.World);
 			break;
 
 		case PlayerState.walkingRight:
+			transform.Translate(playerForward * playerWalkSpeed * Time.deltaTime, Space.World);
 			break;
 
 		case PlayerState.walkingForward:
-			transform.Translate(
-				new Vector3((playerWalkSpeed * -1.0f) * Time.deltaTime, 0f, 0f)
-			);
+			transform.Translate(playerForward * playerWalkSpeed * Time.deltaTime, Space.World);
 			break;
 
 		case PlayerState.walkingBackward:
-			transform.Translate (
-				new Vector3 ((playerWalkSpeed * 1.0f) * Time.deltaTime, 0f, 0f)
-			);
+			transform.Translate(playerForward * playerWalkSpeed * Time.deltaTime, Space.World);
 			break;
 
 		default:
@@ -99,24 +98,26 @@ public class PlayerStateMachine : MonoBehaviour {
 
 		case PlayerState.walkingLeft:
 			playerAnimator.SetBool ("walking", true);
-			// TO-DO
+			playerForward = -Vector3.left;
+			transform.rotation = Quaternion.LookRotation (playerForward);
 			break;
 
 		case PlayerState.walkingRight:
 			playerAnimator.SetBool ("walking", true);
-			// TO-DO
+			playerForward = -Vector3.right;
+			transform.rotation = Quaternion.LookRotation (playerForward);
 			break;
 
 		case PlayerState.walkingForward:
 			playerAnimator.SetBool ("walking", true);
-			transform.rotation = Quaternion.AngleAxis (0, Vector3.up);
-			transform.forward = playerForward;
+			playerForward = Vector3.forward;
+			transform.rotation = Quaternion.LookRotation (playerForward);
 			break;
 
 		case PlayerState.walkingBackward:
 			playerAnimator.SetBool ("walking", true);
-			transform.rotation = Quaternion.AngleAxis (-180, Vector3.up);
-			transform.forward = playerForward;
+			playerForward = Vector3.back;
+			transform.rotation = Quaternion.LookRotation (playerForward);
 			break;
 
 		default:
