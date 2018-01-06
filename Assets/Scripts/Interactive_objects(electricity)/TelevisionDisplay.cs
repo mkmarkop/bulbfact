@@ -2,29 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour {
+public class TelevisionDisplay : ChargeableObject {
 
     public string password;
 
-    private ChargeableObject _charge;
     private bool _displayOn;
 
 	void Start () {
-        _charge = GetComponent<ChargeableObject>();
+        base.Start();
         _displayOn = false;
 	}
 	
 	void Update () {
+        base.Update();
+
 		if(!_displayOn)
         {
-            if(_charge.isCharged())
+            if(isCharged())
             {
-                displayPassword();
+                executeAction();
             }
         }
 	}
 
-    private void displayPassword()
+    //turn on display and show password
+    override public void executeAction()
     {
 
     }

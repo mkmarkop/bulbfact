@@ -2,25 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour {
+public abstract class ChargeableObject : MonoBehaviour {
 
     public float requiredCharge;
 
     private float _currentCharge;
-    private float _maxCharge;
-    private bool _objectCharged;
+    private static readonly float _maxCharge = 2000.0f;
 	
-	void Start () {
+	protected virtual void Start () {
         _currentCharge = 0.0f;
-        _maxCharge = 2000.0f;
-        _objectCharged = false;
 	}
 	
-	void Update () {
-		if(_currentCharge >= requiredCharge)
-        {
-            _objectCharged = true;
-        }
+	protected virtual void Update () {
+
 	}
 
     public void charge(float receivedCharge)
@@ -38,7 +32,8 @@ public class NewBehaviourScript : MonoBehaviour {
 
     public bool isCharged()
     {
-        return _objectCharged;
+        return _currentCharge >= requiredCharge;
     }
 
+    public abstract void executeAction();
 }
