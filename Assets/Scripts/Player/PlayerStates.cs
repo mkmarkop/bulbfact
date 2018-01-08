@@ -4,5 +4,7 @@
 	walkingBackward,
 	walkingLeft,
 	walkingRight,
+    charging,
+    discharging,
 	_stateCount
 };
