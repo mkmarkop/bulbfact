@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(DoorScript))]
 public class Keypad : MonoBehaviour {
     public DoorScript Door;
     public int Key;
