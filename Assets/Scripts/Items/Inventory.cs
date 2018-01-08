@@ -13,17 +13,42 @@ public class Inventory : MonoBehaviour {
 	public int _previousItem = -1;
 	public int _totalItems = 0;
 
+	private Interactable _focused = null;
+
 	void OnEnable() {
+		PlayerSight.onFocused += OnFocused;
 		PickableItem.onItemPicked += AddItem;
+		Interactable.onInteraction += OnInteraction;
 	}
 
 	void OnDisable() {
+		PlayerSight.onFocused -= OnFocused;
 		PickableItem.onItemPicked -= AddItem;
+		Interactable.onInteraction -= OnInteraction;
 	}
 
 	void Awake() {
 		for (int i = 0; i < itemImages.Length; i++) {
 			itemImages [i].enabled = false;
+		}
+	}
+
+	void OnFocused(Interactable intObject) {
+		_focused = intObject;
+		Debug.Log (_focused);
+	}
+
+	void OnInteraction (Interactable.InteractionInfo info) {
+		if (!info.isSuccess) {
+			return;
+		}
+
+		if (_currentItem < 0 || _currentItem >= _totalItems) {
+			return;
+		}
+
+		if (_items [_currentItem] == info.usedItem) {
+			RemoveItem (_currentItem);
 		}
 	}
 
@@ -35,7 +60,7 @@ public class Inventory : MonoBehaviour {
 			PreviousItem ();
 			ChangeIcon ();
 		} else if (Input.GetKeyDown(KeyCode.E) && _totalItems > 0) {
-			RemoveItem (_currentItem);
+			UseItem ();
 		}
 	}
 
@@ -91,6 +116,16 @@ public class Inventory : MonoBehaviour {
 				return;
 			}
 		}
+	}
+
+	void UseItem() {
+		if (_currentItem < 0 || _currentItem >= _totalItems)
+			return;
+
+		if (_focused == null)
+			return;
+
+		_focused.Receive (_items [_currentItem]);
 	}
 
 	void RemoveItem(int index) {
