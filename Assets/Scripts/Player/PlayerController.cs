@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerStateMachine))]
+[RequireComponent(typeof(Rigidbody))]
+
 public class PlayerController : MonoBehaviour {
 
 	private PlayerStateMachine pMachine;
+    private Rigidbody body;
+
 	// Use this for initialization
 	void Start () {
 		pMachine = GetComponent<PlayerStateMachine> ();
@@ -28,5 +32,11 @@ public class PlayerController : MonoBehaviour {
 		} else if (vertical > 0f) {
 			pMachine.tryStateChange (PlayerState.walkingRight);
 		}
-	}
+
+        float jump = Input.GetAxis("Jump");
+        if (jump > 0.0f)
+        {
+            pMachine.tryStateChange(PlayerState.jump);
+        }
+    }
 }

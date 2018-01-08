@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Rigidbody))]
+
 public class PlayerStateMachine : MonoBehaviour {
 
+    private Rigidbody _playerBody;
 	public delegate void playerStateHandler(PlayerState newState);
 	public static event playerStateHandler onStateChange;
 
@@ -79,7 +82,15 @@ public class PlayerStateMachine : MonoBehaviour {
 			walk ();
 			break;
 
-		default:
+        case PlayerState.jump:
+            jump();
+            break;
+
+        case PlayerState.fall:
+            fall();
+            break;
+
+            default:
 			break;
 		}
 	}
@@ -88,7 +99,17 @@ public class PlayerStateMachine : MonoBehaviour {
 		transform.Translate(playerForward * playerWalkSpeed * Time.deltaTime, Space.World);
 	}
 
-	void faceTowards(Vector3 dir) {
+    void jump()
+    {
+        _playerBody.AddForce(Vector3.up * 15f);
+    }
+
+    void fall()
+    {
+        _playerBody.AddForce(-Vector3.up * 15f);
+    }
+
+    void faceTowards(Vector3 dir) {
 		playerAnimator.SetBool ("walking", true);
 		playerForward = dir;
 		transform.rotation = Quaternion.LookRotation (playerForward);
@@ -122,13 +143,24 @@ public class PlayerStateMachine : MonoBehaviour {
 			faceTowards (Vector3.back);
 			break;
 
-		default:
+        case PlayerState.jump:
+                //Tu se ne treba ništa napraviti.
+            
+            break;
+
+            default:
 			break;
 		}
 
 		currentState = newState;
 		if (onStateChange != null) {
 			onStateChange (currentState);
+            if (currentState == PlayerState.jump)
+            {
+                tryStateChange(PlayerState.fall);
+            }
 		}
+
 	}
+    
 }

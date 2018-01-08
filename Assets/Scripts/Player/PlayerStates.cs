@@ -4,5 +4,7 @@
 	walkingBackward,
 	walkingLeft,
 	walkingRight,
+    jump,
+    fall,
 	_stateCount
 };
