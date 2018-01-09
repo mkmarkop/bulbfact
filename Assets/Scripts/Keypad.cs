@@ -18,12 +18,13 @@ public class Keypad : MonoBehaviour {
 	}
     void OnTriggerStay(Collider other)
     {
+        if (!other.CompareTag("Player")) { return; }
         if (Input.GetButtonDown("Activate"))
         {
             if (Door.isOpen()) { return; }
             ActivateKeypad();
         }
-}
+    }
 
     void ActivateKeypad()
     {
