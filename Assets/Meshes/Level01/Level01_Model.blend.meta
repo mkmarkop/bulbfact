@@ -1,0 +1,379 @@
+fileFormatVersion: 2
+guid: f3fcc2c8fe3f3f44da2cb071e611b2cc
+timeCreated: 1515504985
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Cube
+    100004: Cube_001
+    100006: Cube_002
+    100008: Cube_003
+    100010: Cube_004
+    100012: Cube_005
+    100014: Cube_006
+    100016: Cube_007
+    100018: Cube_008
+    100020: Cube_009
+    100022: Cube_010
+    100024: Cube_011
+    100026: Cube_012
+    100028: Cube_013
+    100030: Cube_014
+    100032: Cube_015
+    100034: Cube_016
+    100036: Cube_017
+    100038: Cube_018
+    100040: Cube_019
+    100042: Cylinder
+    100044: Cylinder_001
+    100046: Cylinder_002
+    100048: Cylinder_003
+    100050: Cylinder_004
+    100052: Cylinder_005
+    100054: Cylinder_006
+    100056: Cylinder_007
+    100058: Cylinder_008
+    100060: Cylinder_009
+    100062: Plane
+    100064: Sphere
+    100066: SurfCircle
+    400000: //RootNode
+    400002: Cube
+    400004: Cube_001
+    400006: Cube_002
+    400008: Cube_003
+    400010: Cube_004
+    400012: Cube_005
+    400014: Cube_006
+    400016: Cube_007
+    400018: Cube_008
+    400020: Cube_009
+    400022: Cube_010
+    400024: Cube_011
+    400026: Cube_012
+    400028: Cube_013
+    400030: Cube_014
+    400032: Cube_015
+    400034: Cube_016
+    400036: Cube_017
+    400038: Cube_018
+    400040: Cube_019
+    400042: Cylinder
+    400044: Cylinder_001
+    400046: Cylinder_002
+    400048: Cylinder_003
+    400050: Cylinder_004
+    400052: Cylinder_005
+    400054: Cylinder_006
+    400056: Cylinder_007
+    400058: Cylinder_008
+    400060: Cylinder_009
+    400062: Plane
+    400064: Sphere
+    400066: SurfCircle
+    2300000: Cube
+    2300002: Cube_001
+    2300004: Cube_002
+    2300006: Cube_003
+    2300008: Cube_004
+    2300010: Cube_005
+    2300012: Cube_006
+    2300014: Cube_007
+    2300016: Cube_008
+    2300018: Cube_009
+    2300020: Cube_010
+    2300022: Cube_011
+    2300024: Cube_012
+    2300026: Cube_013
+    2300028: Cube_014
+    2300030: Cube_015
+    2300032: Cube_016
+    2300034: Cube_017
+    2300036: Cube_018
+    2300038: Cube_019
+    2300040: Cylinder
+    2300042: Cylinder_001
+    2300044: Cylinder_002
+    2300046: Cylinder_003
+    2300048: Cylinder_004
+    2300050: Cylinder_005
+    2300052: Cylinder_006
+    2300054: Cylinder_007
+    2300056: Cylinder_008
+    2300058: Cylinder_009
+    2300060: Plane
+    2300062: Sphere
+    2300064: SurfCircle
+    3300000: Cube
+    3300002: Cube_001
+    3300004: Cube_002
+    3300006: Cube_003
+    3300008: Cube_004
+    3300010: Cube_005
+    3300012: Cube_006
+    3300014: Cube_007
+    3300016: Cube_008
+    3300018: Cube_009
+    3300020: Cube_010
+    3300022: Cube_011
+    3300024: Cube_012
+    3300026: Cube_013
+    3300028: Cube_014
+    3300030: Cube_015
+    3300032: Cube_016
+    3300034: Cube_017
+    3300036: Cube_018
+    3300038: Cube_019
+    3300040: Cylinder
+    3300042: Cylinder_001
+    3300044: Cylinder_002
+    3300046: Cylinder_003
+    3300048: Cylinder_004
+    3300050: Cylinder_005
+    3300052: Cylinder_006
+    3300054: Cylinder_007
+    3300056: Cylinder_008
+    3300058: Cylinder_009
+    3300060: Plane
+    3300062: Sphere
+    3300064: SurfCircle
+    4300000: Cube_013
+    4300002: SurfCircle
+    4300004: Cylinder_006
+    4300006: Cylinder_002
+    4300008: Plane
+    4300010: Cube_010
+    4300012: Cube_004
+    4300014: Cube_003
+    4300016: Cube_002
+    4300018: Cylinder
+    4300020: Cube_008
+    4300022: Cube_001
+    4300024: Cube
+    4300026: Cube_006
+    4300028: Cube_007
+    4300030: Cube_009
+    4300032: Sphere
+    4300034: Cube_005
+    4300036: Cube_011
+    4300038: Cube_012
+    4300040: Cube_014
+    4300042: Cylinder_001
+    4300044: Cylinder_005
+    4300046: Cylinder_004
+    4300048: Cylinder_003
+    4300050: Cylinder_007
+    4300052: Cube_017
+    4300054: Cube_016
+    4300056: Cube_015
+    4300058: Cylinder_008
+    4300060: Cube_019
+    4300062: Cube_018
+    4300064: Cylinder_009
+    7400000: Default Take
+    9500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ChargePoint_000
+    second: {fileID: 2100000, guid: c86c2cf17e3c4724abdcacc8ad54996d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ChargePoint_001
+    second: {fileID: 2100000, guid: a778ed6aef1060f4bbb4bd4147b10315, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DischrgePoint
+    second: {fileID: 2100000, guid: 939069ff2a4aaf84381045fb7b7acd72, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DischrgePoint_001
+    second: {fileID: 2100000, guid: 3860ecf1264e2ec4bb20e55cc028348d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ekran
+    second: {fileID: 2100000, guid: 5f2a54f5b25b4c84488ef933faaaada3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Floor_blue
+    second: {fileID: 2100000, guid: e0d9915355b1e5e4ba7125379ca21ebf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: f84deb2f9732ce944bbe5fd32af89265, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_001
+    second: {fileID: 2100000, guid: 49218a89e7e8ae1429b416c86f0b1f2c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_002
+    second: {fileID: 2100000, guid: c8b38ff9de9bfa74baaa20045161df1e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_003
+    second: {fileID: 2100000, guid: 2b7840753e3e47447a18e920d31d0581, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_004
+    second: {fileID: 2100000, guid: bb8257bd0ca767a4f88c6a0020a23ab6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_005
+    second: {fileID: 2100000, guid: 5f9f61e43261ddf44aa6fe470e95a4f1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_006
+    second: {fileID: 2100000, guid: 2ce7480d38f85a0419be3aa01803c9c7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_008
+    second: {fileID: 2100000, guid: 174cd369aa9d2764c9edac76ef2fcf11, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_011
+    second: {fileID: 2100000, guid: e59a94bb398de8940a8f1c0f9324571b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_012
+    second: {fileID: 2100000, guid: b53009aac05d1414eb746f47dcac9eda, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_013
+    second: {fileID: 2100000, guid: f3c316d0f33e91d468d06087b36b90e9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_014
+    second: {fileID: 2100000, guid: 3d021984a65950a4abb9d0a7c7d3b778, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Orange_elevator
+    second: {fileID: 2100000, guid: b484aa81a67736c40bfdf8bc699118a3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: VrataMeterial
+    second: {fileID: 2100000, guid: 04865ba816ce3274e9b5666eb910f1a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: VrataMeterial_001
+    second: {fileID: 2100000, guid: 1355305d93ef80c43849b86e2813a01d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: VrataMeterial_005
+    second: {fileID: 2100000, guid: f408ea62a7cab1e4dbfa7c34a1ec572a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WaterMachineMaterial
+    second: {fileID: 2100000, guid: c5eb518418d2f404cb71a33e05c68793, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tv
+    second: {fileID: 2100000, guid: 4227e6686a65a3f49b31b9d6f09c252e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: unnamed
+    second: {fileID: 2100000, guid: 7025ff6b554aec14584ce1cee5979dbf, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
