@@ -5,130 +5,141 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class PlayerStateMachine : MonoBehaviour {
 
-	public delegate void playerStateHandler(PlayerState newState);
-	public static event playerStateHandler onStateChange;
+    public delegate void playerStateHandler(PlayerState newState);
+    public static event playerStateHandler onStateChange;
 
-	public float playerWalkSpeed = 1.0f;
+    public float playerWalkSpeed = 1.0f;
 
-	private Vector3 playerForward;
-	private Vector3 playerOrientation;
-	private Animator playerAnimator;
-	private PlayerState currentState;
+    private Vector3 playerForward;
+    private Vector3 playerOrientation;
+    private Animator playerAnimator;
+    private PlayerState currentState;
 
-	// Use this for initialization
-	void Start () {
-		playerForward = Vector3.forward;
-		playerAnimator = GetComponent<Animator> ();
-		currentState = PlayerState.idle;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		onStateCycle ();
-	}
+    // Use this for initialization
+    void Start() {
+        playerForward = Vector3.forward;
+        playerAnimator = GetComponent<Animator>();
+        currentState = PlayerState.idle;
+    }
 
-	bool isValidTransition(PlayerState newState) {
-		bool isValid = false;
+    // Update is called once per frame
+    void Update() {
+        onStateCycle();
+    }
 
-		switch (currentState) {
-		case PlayerState.idle:
-			isValid = true;
-			break;
+    bool isValidTransition(PlayerState newState) {
+        bool isValid = false;
 
-		case PlayerState.walkingLeft:
-			isValid = true;
-			break;
+        switch (currentState) {
+            case PlayerState.idle:
+                isValid = true;
+                break;
 
-		case PlayerState.walkingRight:
-			isValid = true;
-			break;
+            case PlayerState.walkingLeft:
+                isValid = true;
+                break;
 
-		case PlayerState.walkingForward:
-			isValid = true;
-			break;
+            case PlayerState.walkingRight:
+                isValid = true;
+                break;
 
-		case PlayerState.walkingBackward:
-			isValid = true;
-			break;
+            case PlayerState.walkingForward:
+                isValid = true;
+                break;
 
-		default:
-			break;
-		}
+            case PlayerState.walkingBackward:
+                isValid = true;
+                break;
 
-		return isValid;
-	}
+            case PlayerState.charging:
+                isValid = newState != PlayerState.idle;
+                break;
 
-	void onStateCycle() {
-		switch (currentState) {
-		case PlayerState.idle:
-			break;
+            case PlayerState.discharging:
+                isValid = newState != PlayerState.idle;
+                break;
 
-		case PlayerState.walkingLeft:
-			walk ();
-			break;
+            default:
+                break;
+        }
 
-		case PlayerState.walkingRight:
-			walk ();
-			break;
+        return isValid;
+    }
 
-		case PlayerState.walkingForward:
-			walk ();
-			break;
+    void onStateCycle() {
+        switch (currentState) {
+            case PlayerState.idle:
+                break;
 
-		case PlayerState.walkingBackward:
-			walk ();
-			break;
+            case PlayerState.walkingLeft:
+                walk();
+                break;
 
-		default:
-			break;
-		}
-	}
+            case PlayerState.walkingRight:
+                walk();
+                break;
 
-	void walk() {
-		transform.Translate(playerForward * playerWalkSpeed * Time.deltaTime, Space.World);
-	}
+            case PlayerState.walkingForward:
+                walk();
+                break;
 
-	void faceTowards(Vector3 dir) {
-		playerAnimator.SetBool ("walking", true);
-		playerForward = dir;
-		transform.rotation = Quaternion.LookRotation (playerForward);
-	}
+            case PlayerState.walkingBackward:
+                walk();
+                break;
 
-	public void tryStateChange(PlayerState newState) {
-		if (currentState == newState)
-			return;
+            default:
+                break;
+        }
+    }
 
-		if (!isValidTransition (newState))
-			return;
+    void walk() {
+        transform.Translate(playerForward * playerWalkSpeed * Time.deltaTime, Space.World);
+    }
 
-		switch (newState) {
-		case PlayerState.idle:
-			playerAnimator.SetBool ("walking", false);
-			break;
+    void faceTowards(Vector3 dir) {
+        playerAnimator.SetBool("walking", true);
+        playerForward = dir;
+        transform.rotation = Quaternion.LookRotation(playerForward);
+    }
 
-		case PlayerState.walkingLeft:
-			faceTowards (-Vector3.left);
-			break;
+    public void tryStateChange(PlayerState newState) {
+        if (currentState == newState)
+            return;
 
-		case PlayerState.walkingRight:
-			faceTowards (-Vector3.right);
-			break;
+        if (!isValidTransition(newState))
+            return;
 
-		case PlayerState.walkingForward:
-			faceTowards (Vector3.forward);
-			break;
+        switch (newState) {
+            case PlayerState.idle:
+                playerAnimator.SetBool("walking", false);
+                break;
 
-		case PlayerState.walkingBackward:
-			faceTowards (Vector3.back);
-			break;
+            case PlayerState.walkingLeft:
+                faceTowards(-Vector3.left);
+                break;
 
-		default:
-			break;
-		}
+            case PlayerState.walkingRight:
+                faceTowards(-Vector3.right);
+                break;
 
-		currentState = newState;
-		if (onStateChange != null) {
-			onStateChange (currentState);
-		}
-	}
+            case PlayerState.walkingForward:
+                faceTowards(Vector3.forward);
+                break;
+
+            case PlayerState.walkingBackward:
+                faceTowards(Vector3.back);
+                break;
+
+            default:
+                break;
+        }
+
+        currentState = newState;
+        if (onStateChange != null) {
+            onStateChange(currentState);
+        }
+    }
+    public PlayerState GetCurrentState(){
+        return currentState;
+    }
 }
