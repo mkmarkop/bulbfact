@@ -1,9 +1,14 @@
 ﻿public enum PlayerState {
 	idle = 0,
-	walkingForward,
-	walkingBackward,
-	walkingLeft,
-	walkingRight,
+    grounded,
+    walkingForward,
+    walkingBackward,
+    walkingLeft,
+    walkingRight,
+    glidingForward,
+    glidingBackward,
+    glidingLeft,
+    glidingRight,
     jump,
     fall,
 	_stateCount

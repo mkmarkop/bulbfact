@@ -6,23 +6,27 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 
 public class PlayerStateMachine : MonoBehaviour {
-
+    
     private Rigidbody _playerBody;
 	public delegate void playerStateHandler(PlayerState newState);
 	public static event playerStateHandler onStateChange;
 
-	public float playerWalkSpeed = 1.0f;
+    public float playerWalkSpeed = 1.0f;
+    public float playerJumpIntensity = 85.0f;
 
-	private Vector3 playerForward;
+    private Vector3 playerForward;
 	private Vector3 playerOrientation;
 	private Animator playerAnimator;
-	private PlayerState currentState;
+	public PlayerState currentState;
+
+    private bool allowedToJump;
 
 	// Use this for initialization
 	void Start () {
 		playerForward = Vector3.forward;
 		playerAnimator = GetComponent<Animator> ();
 		currentState = PlayerState.idle;
+        _playerBody = GetComponent<Rigidbody>();
 	}
 	
 	// Update is called once per frame
@@ -34,27 +38,94 @@ public class PlayerStateMachine : MonoBehaviour {
 		bool isValid = false;
 
 		switch (currentState) {
-		case PlayerState.idle:
-			isValid = true;
-			break;
 
-		case PlayerState.walkingLeft:
-			isValid = true;
-			break;
+        case PlayerState.idle:
+		    isValid = newState != PlayerState.fall;
+		    break;
+
+        case PlayerState.grounded:
+            isValid = newState != PlayerState.fall;
+            break;
+
+        case PlayerState.walkingLeft:
+            isValid =
+                newState != PlayerState.fall &&
+                newState != PlayerState.glidingBackward &&
+                newState != PlayerState.glidingForward &&
+                newState != PlayerState.glidingLeft &&
+                newState != PlayerState.glidingRight;
+            break;
 
 		case PlayerState.walkingRight:
-			isValid = true;
-			break;
+                isValid =
+                    newState != PlayerState.fall &&
+                    newState != PlayerState.glidingBackward &&
+                    newState != PlayerState.glidingForward &&
+                    newState != PlayerState.glidingLeft &&
+                    newState != PlayerState.glidingRight;
+                break;
 
 		case PlayerState.walkingForward:
-			isValid = true;
-			break;
+                isValid =
+                    newState != PlayerState.fall &&
+                    newState != PlayerState.glidingBackward &&
+                    newState != PlayerState.glidingForward &&
+                    newState != PlayerState.glidingLeft &&
+                    newState != PlayerState.glidingRight;
+                break;
 
-		case PlayerState.walkingBackward:
-			isValid = true;
-			break;
+        case PlayerState.walkingBackward:
+                isValid =
+                    newState != PlayerState.fall &&
+                    newState != PlayerState.glidingBackward &&
+                    newState != PlayerState.glidingForward &&
+                    newState != PlayerState.glidingLeft &&
+                    newState != PlayerState.glidingRight;
+                break;
 
-		default:
+        case PlayerState.jump:
+                isValid =
+                        newState == PlayerState.fall ||
+                        newState == PlayerState.glidingLeft ||
+                        newState == PlayerState.glidingRight ||
+                        newState == PlayerState.glidingForward ||
+                        newState == PlayerState.glidingBackward;
+            break;
+
+        case PlayerState.fall:
+                isValid = 
+                        newState == PlayerState.glidingLeft ||
+                        newState == PlayerState.glidingRight ||
+                        newState == PlayerState.glidingForward ||
+                        newState == PlayerState.glidingBackward ||
+                        newState == PlayerState.grounded;
+                break;
+
+        case PlayerState.glidingForward:
+            isValid =
+                    newState == PlayerState.grounded ||
+                    newState == PlayerState.fall;
+                break;
+
+        case PlayerState.glidingBackward:
+                isValid = 
+                    newState == PlayerState.grounded ||
+                    newState == PlayerState.fall;
+            break;
+
+        case PlayerState.glidingLeft:
+                isValid = 
+                    newState == PlayerState.grounded ||
+                    newState == PlayerState.fall;
+            break;
+
+        case PlayerState.glidingRight:
+            isValid = 
+                    newState == PlayerState.grounded ||
+                    newState == PlayerState.fall;
+            break;
+
+            default:
 			break;
 		}
 
@@ -67,27 +138,41 @@ public class PlayerStateMachine : MonoBehaviour {
 			break;
 
 		case PlayerState.walkingLeft:
-			walk ();
+            walk ();
 			break;
 
 		case PlayerState.walkingRight:
-			walk ();
+            walk ();
 			break;
 
 		case PlayerState.walkingForward:
-			walk ();
+            walk ();
 			break;
 
 		case PlayerState.walkingBackward:
-			walk ();
+            walk ();
 			break;
 
+        case PlayerState.glidingLeft:
+            glide();
+            break;
+        
+        case PlayerState.glidingRight:
+            glide();
+            break;
+        
+        case PlayerState.glidingForward:
+            glide();
+            break;
+        
+        case PlayerState.glidingBackward:
+            glide();
+            break;
+
         case PlayerState.jump:
-            jump();
             break;
 
         case PlayerState.fall:
-            fall();
             break;
 
             default:
@@ -96,17 +181,17 @@ public class PlayerStateMachine : MonoBehaviour {
 	}
 
 	void walk() {
-		transform.Translate(playerForward * playerWalkSpeed * Time.deltaTime, Space.World);
-	}
+        transform.Translate(playerForward * playerWalkSpeed * Time.deltaTime, Space.World);
+    }
 
     void jump()
     {
-        _playerBody.AddForce(Vector3.up * 15f);
+        _playerBody.AddForce(Vector3.up * playerJumpIntensity);
     }
 
-    void fall()
+    void glide()
     {
-        _playerBody.AddForce(-Vector3.up * 15f);
+        transform.Translate(playerForward * playerWalkSpeed * 0.0f * Time.deltaTime, Space.World);
     }
 
     void faceTowards(Vector3 dir) {
@@ -119,8 +204,12 @@ public class PlayerStateMachine : MonoBehaviour {
 		if (currentState == newState)
 			return;
 
-		if (!isValidTransition (newState))
+        if (newState == PlayerState.jump && !allowedToJump)
+            return;
+
+        if (!isValidTransition (newState))
 			return;
+        
 
 		switch (newState) {
 		case PlayerState.idle:
@@ -132,35 +221,71 @@ public class PlayerStateMachine : MonoBehaviour {
 			break;
 
 		case PlayerState.walkingRight:
-			faceTowards (-Vector3.right);
+            faceTowards (-Vector3.right);
 			break;
 
 		case PlayerState.walkingForward:
-			faceTowards (Vector3.forward);
+            faceTowards (Vector3.forward);
 			break;
 
 		case PlayerState.walkingBackward:
-			faceTowards (Vector3.back);
+            faceTowards (Vector3.back);
 			break;
 
-        case PlayerState.jump:
-                //Tu se ne treba ništa napraviti.
-            
+        case PlayerState.glidingLeft:
+            faceTowards(-Vector3.left);
             break;
 
-            default:
+        case PlayerState.glidingRight:
+            faceTowards(-Vector3.right);
+            break;
+
+        case PlayerState.glidingForward:
+            faceTowards(Vector3.forward);
+            break;
+
+        case PlayerState.glidingBackward:
+            faceTowards(Vector3.back);
+            break;
+
+        case PlayerState.jump:
+            jump();
+            break;
+
+         default:
 			break;
 		}
 
 		currentState = newState;
 		if (onStateChange != null) {
-			onStateChange (currentState);
-            if (currentState == PlayerState.jump)
-            {
-                tryStateChange(PlayerState.fall);
-            }
-		}
+			onStateChange(currentState);
+        }
 
-	}
-    
+        if (currentState == PlayerState.jump)
+        {
+            tryStateChange(PlayerState.fall);
+        } else if (currentState == PlayerState.grounded)
+        {
+            tryStateChange(PlayerState.idle);
+        }
+
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag.Equals("Floor"))
+        {
+            allowedToJump = true;
+            tryStateChange(PlayerState.grounded);
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag.Equals("Floor"))
+        {
+            allowedToJump = false;
+        }
+    }
+
 }

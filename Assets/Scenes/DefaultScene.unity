@@ -184,7 +184,7 @@ GameObject:
   - component: {fileID: 678306007}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -266,6 +266,7 @@ GameObject:
   - component: {fileID: 818972535}
   - component: {fileID: 818972534}
   - component: {fileID: 818972532}
+  - component: {fileID: 818972536}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -285,7 +286,7 @@ Animator:
   m_Avatar: {fileID: 9000000, guid: 0b035c19a4bf42a4da29a58be273eb6b, type: 3}
   m_Controller: {fileID: 9100000, guid: ce12cbe3b2562e744becaddd13a205f4, type: 2}
   m_CullingMode: 1
-  m_UpdateMode: 0
+  m_UpdateMode: 1
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -298,7 +299,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 818972531}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.7, y: 0.6, z: 12.3}
+  m_LocalPosition: {x: -0.7, y: 1.48, z: 12.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 398434279}
@@ -318,6 +319,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerWalkSpeed: 1
+  playerJumpIntensity: 300
+  currentState: 0
 --- !u!114 &818972535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,6 +332,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 792a83eef8bc6a5499ae359f85c951ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &818972536
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 818972531}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 1
 --- !u!1 &826422603
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,6 +359,7 @@ GameObject:
   - component: {fileID: 826422606}
   - component: {fileID: 826422605}
   - component: {fileID: 826422604}
+  - component: {fileID: 826422609}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -417,6 +436,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &826422609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 826422603}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab6e59e382f4a894c873b953f6ed13f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lookAt: {fileID: 818972533}
 --- !u!1 &899300111
 GameObject:
   m_ObjectHideFlags: 0
@@ -629,7 +660,6 @@ GameObject:
   - component: {fileID: 1531276199}
   - component: {fileID: 1531276200}
   - component: {fileID: 1531276201}
-  - component: {fileID: 1531276202}
   m_Layer: 0
   m_Name: NurbsCurve_001
   m_TagString: Untagged
@@ -643,13 +673,13 @@ Transform:
   m_PrefabParentObject: {fileID: 400014, guid: 0b035c19a4bf42a4da29a58be273eb6b, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1531276198}
-  m_LocalRotation: {x: -0.08051759, y: -0.70276284, z: 0.06064361, w: 0.7042469}
+  m_LocalRotation: {x: -0.009955588, y: -0.70728964, z: -0.009962715, w: 0.7067836}
   m_LocalPosition: {x: -0.4960385, y: -4.9210086, z: 0.92890096}
   m_LocalScale: {x: 0.48000008, y: 0.48000008, z: 0.48000002}
   m_Children: []
   m_Father: {fileID: 818972533}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -1.6140001, y: -90.04101, z: 0}
 --- !u!137 &1531276200
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -712,22 +742,7 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.0166322, y: 0.017733455, z: 0.11560297}
     m_Extent: {x: 1.8449956, y: 1.8449951, z: 4.4480624}
   m_DirtyAABB: 0
---- !u!54 &1531276201
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1531276198}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!65 &1531276202
+--- !u!65 &1531276201
 BoxCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -737,8 +752,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 11.2523985, y: 19.897388, z: 8.212074}
-  m_Center: {x: 1.9804367, y: 19.51475, z: -0.4453539}
+  m_Size: {x: 11.108152, y: 19.897263, z: 8.21208}
+  m_Center: {x: -2, y: 19.514887, z: -0.44535396}
 --- !u!1 &1599611945
 GameObject:
   m_ObjectHideFlags: 0
