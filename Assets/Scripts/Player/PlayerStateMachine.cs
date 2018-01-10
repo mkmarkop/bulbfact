@@ -252,8 +252,9 @@ public class PlayerStateMachine : MonoBehaviour {
             jump();
             break;
 
-         default:
+        default:
 			break;
+
 		}
 
 		currentState = newState;

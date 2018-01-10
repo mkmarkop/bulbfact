@@ -263,10 +263,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 818972533}
-  - component: {fileID: 818972535}
-  - component: {fileID: 818972534}
   - component: {fileID: 818972532}
   - component: {fileID: 818972536}
+  - component: {fileID: 818972537}
+  - component: {fileID: 818972535}
+  - component: {fileID: 818972534}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -287,7 +288,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: ce12cbe3b2562e744becaddd13a205f4, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 1
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -299,7 +300,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 818972531}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.7, y: 1.48, z: 12.3}
+  m_LocalPosition: {x: -0.7, y: 4.4, z: 12.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 398434279}
@@ -315,11 +316,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 818972531}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93e2bcad21357cc4fa5c7b39c551c51b, type: 3}
+  m_Script: {fileID: 11500000, guid: 4d775ca18f796ea45a1bb57d20a8e996, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerWalkSpeed: 1
-  playerJumpIntensity: 300
+  playerJumpIntensity: 85
   currentState: 0
 --- !u!114 &818972535
 MonoBehaviour:
@@ -329,7 +330,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 818972531}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 792a83eef8bc6a5499ae359f85c951ca, type: 3}
+  m_Script: {fileID: 11500000, guid: 5927d5bccd1606843a0ce3e94db77b74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!54 &818972536
@@ -347,6 +348,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 1
+--- !u!114 &818972537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 818972531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d775ca18f796ea45a1bb57d20a8e996, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerWalkSpeed: 1
+  playerJumpIntensity: 85
+  currentState: 0
 --- !u!1 &826422603
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,7 +421,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 61
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -429,8 +444,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 826422603}
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 26.8, y: 8.4, z: 18.2}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 26.8, y: 11.7, z: 18.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -442,7 +457,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 826422603}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab6e59e382f4a894c873b953f6ed13f9, type: 3}
   m_Name: 
@@ -660,6 +675,10 @@ GameObject:
   - component: {fileID: 1531276199}
   - component: {fileID: 1531276200}
   - component: {fileID: 1531276201}
+  - component: {fileID: 1531276205}
+  - component: {fileID: 1531276204}
+  - component: {fileID: 1531276203}
+  - component: {fileID: 1531276202}
   m_Layer: 0
   m_Name: NurbsCurve_001
   m_TagString: Untagged
@@ -754,6 +773,63 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 11.108152, y: 19.897263, z: 8.21208}
   m_Center: {x: -2, y: 19.514887, z: -0.44535396}
+--- !u!114 &1531276202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1531276198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5927d5bccd1606843a0ce3e94db77b74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1531276203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1531276198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d775ca18f796ea45a1bb57d20a8e996, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerWalkSpeed: 1
+  playerJumpIntensity: 85
+  currentState: 0
+--- !u!95 &1531276204
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1531276198}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!54 &1531276205
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1531276198}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1599611945
 GameObject:
   m_ObjectHideFlags: 0
