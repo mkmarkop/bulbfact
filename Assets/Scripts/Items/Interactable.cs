@@ -35,6 +35,10 @@ public class Interactable : MonoBehaviour {
 		}
 	}
 
+	protected void setReuseable () {
+		_isUsed = false;
+	}	
+
 	protected virtual void Interact() {
 		GetComponent<Renderer> ().material.color = new Color (0, 255, 0);
 	}

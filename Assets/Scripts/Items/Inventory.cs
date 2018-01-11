@@ -63,7 +63,7 @@ public class Inventory : MonoBehaviour {
 		} else if (Input.GetKeyDown(KeyCode.J)) {
 			PreviousItem ();
 			ChangeIcon ();
-		} else if (Input.GetKeyDown(KeyCode.E) && _totalItems > 0) {
+		} else if (Input.GetKeyDown(KeyCode.E)) {
 			UseItem ();
 		}
 	}
