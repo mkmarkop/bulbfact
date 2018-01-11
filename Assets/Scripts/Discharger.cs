@@ -19,7 +19,7 @@ public class Discharger : MonoBehaviour {
     }
     public void OnTriggerStay(Collider other)
     {
-        if (!other.CompareTag("StandingTrigger")) { return; }
+        if (!other.CompareTag("Player")) { return; }
         if (Input.GetButtonDown("Activate"))
         {
             _playerStateMachine.tryStateChange(PlayerState.discharging);

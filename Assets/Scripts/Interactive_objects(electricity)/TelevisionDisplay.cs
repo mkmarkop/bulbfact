@@ -13,17 +13,16 @@ public class TelevisionDisplay : ChargeableObject {
 
     private bool _displayOn;
 
-	void Start () {
+    override
+	protected void Start () {
         base.Start();
         _displayOn = false;
         displayText.enabled = false;
         displayText.text = password;
-        displayText.color = Color.green;
-        displayText.fontStyle = FontStyle.Bold;
-        displayText.fontSize = 20;
     }
 	
-	void Update () {
+    override
+	protected void Update () {
         base.Update();
 
 		if(!_displayOn)
