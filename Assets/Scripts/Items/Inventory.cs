@@ -47,6 +47,10 @@ public class Inventory : MonoBehaviour {
 			return;
 		}
 
+		if (info.usedItem == null) {
+			return;
+		}
+
 		if (_items [_currentItem] == info.usedItem) {
 			RemoveItem (_currentItem);
 		}
@@ -119,13 +123,14 @@ public class Inventory : MonoBehaviour {
 	}
 
 	void UseItem() {
-		if (_currentItem < 0 || _currentItem >= _totalItems)
-			return;
-
 		if (_focused == null)
 			return;
 
-		_focused.Receive (_items [_currentItem]);
+		if (_currentItem < 0 || _currentItem >= _totalItems) {
+			_focused.Receive (null);
+		} else {
+			_focused.Receive (_items [_currentItem]);
+		}
 	}
 
 	void RemoveItem(int index) {
