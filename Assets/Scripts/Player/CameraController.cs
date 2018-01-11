@@ -7,13 +7,33 @@ public class CameraController : MonoBehaviour {
     private Transform _camTransform;
     public Transform lookAt;
     private Camera _cam;
-    private Vector3 offset = new Vector3(30f, 10f, 0f);
-    private float _distance;
-    private float _currentX;
-    private float _currentY;
-    private float _sensitivityX = 15f;
-    private float _sensitivityY = 15f;
+    private PlayerState _currentState;
+    private bool _hasToBeMoved;
 
+    private void OnEnable()
+    {
+        PlayerStateMachine.onStateChange += playerStateChangeListener;
+    }
+
+    private void OnDisable()
+    {
+        PlayerStateMachine.onStateChange -= playerStateChangeListener;
+    }
+
+    private void playerStateChangeListener(PlayerState ps)
+    {
+        //ne treba:
+        //_hasToBeMoved = 
+        //    ps == PlayerState.walkingBackward ||
+        //    ps == PlayerState.walkingForward ||
+        //    ps == PlayerState.walkingLeft ||
+        //    ps == PlayerState.walkingRight ||
+        //    ps == PlayerState.glidingBackward ||
+        //    ps == PlayerState.glidingForward ||
+        //    ps == PlayerState.glidingLeft ||
+        //    ps == PlayerState.glidingRight;
+        //Debug.Log(ps.ToString());
+    }
     // Use this for initialization
     void Start ()
     {
@@ -24,16 +44,16 @@ public class CameraController : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        _currentX += Input.GetAxis("Horizontal");
-        _currentY += Input.GetAxis("Vertical");
+        // ne treba:
+        // if (_hasToBeMoved)
+        // {
+        //    _delta += Input.GetAxis("Horizontal") / 15;
+        // }
     }
 
     void LateUpdate()
     {
-        Vector3 dir = new Vector3(0f, 0f, -_distance);
-        Quaternion rotation = Quaternion.Euler(_currentX * _sensitivityX, _currentY * _sensitivityY, 0);
-        _camTransform.position = lookAt.position + rotation * dir + offset;
-        _camTransform.LookAt(lookAt.position);
+        _camTransform.position = new Vector3(_camTransform.position.x, _camTransform.position.y, lookAt.position.z);
     }
 
 }

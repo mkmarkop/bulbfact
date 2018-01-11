@@ -4,9 +4,11 @@ using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(CameraController))]
+[RequireComponent(typeof(PlayerStateMachine))]
 
 public class PlayerStateMachine : MonoBehaviour {
-    
+    public CameraController cameraController;
     private Rigidbody _playerBody;
 	public delegate void playerStateHandler(PlayerState newState);
 	public static event playerStateHandler onStateChange;
@@ -19,7 +21,7 @@ public class PlayerStateMachine : MonoBehaviour {
 	private Animator playerAnimator;
 	public PlayerState currentState;
 
-    private bool allowedToJump;
+    private bool _allowedToJump;
 
 	// Use this for initialization
 	void Start () {
@@ -204,7 +206,7 @@ public class PlayerStateMachine : MonoBehaviour {
 		if (currentState == newState)
 			return;
 
-        if (newState == PlayerState.jump && !allowedToJump)
+        if (newState == PlayerState.jump && !_allowedToJump)
             return;
 
         if (!isValidTransition (newState))
@@ -276,7 +278,7 @@ public class PlayerStateMachine : MonoBehaviour {
     {
         if (collision.gameObject.tag.Equals("Floor"))
         {
-            allowedToJump = true;
+            _allowedToJump = true;
             tryStateChange(PlayerState.grounded);
         }
     }
@@ -285,7 +287,7 @@ public class PlayerStateMachine : MonoBehaviour {
     {
         if (collision.gameObject.tag.Equals("Floor"))
         {
-            allowedToJump = false;
+            _allowedToJump = false;
         }
     }
 

@@ -4,38 +4,49 @@ using UnityEngine;
 
 [RequireComponent(typeof(PlayerStateMachine))]
 
-public class PlayerController : MonoBehaviour {
-
-	private PlayerStateMachine pMachine;
+public class PlayerController : MonoBehaviour
+{
+    private PlayerStateMachine pMachine;
     private Rigidbody body;
 
 	// Use this for initialization
 	void Start () {
 		pMachine = GetComponent<PlayerStateMachine> ();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		float horizontal = Input.GetAxis ("Horizontal");
-		if (horizontal == 0) {
-			pMachine.tryStateChange (PlayerState.idle);
-		} else if (horizontal < 0f) {
-			pMachine.tryStateChange (PlayerState.walkingBackward);
-		} else if (horizontal > 0f) {
-			pMachine.tryStateChange (PlayerState.walkingForward);
-		}
 
-		float vertical = Input.GetAxis ("Vertical");
-		if (vertical < 0f) {
-			pMachine.tryStateChange (PlayerState.walkingLeft);
-		} else if (vertical > 0f) {
-			pMachine.tryStateChange (PlayerState.walkingRight);
-		}
+    // Update is called once per frame
+    void Update()
+    {
+        float horizontal = Input.GetAxis("Horizontal");
+        if (horizontal == 0)
+        {
+            pMachine.tryStateChange(PlayerState.idle);
+        }
+        else if (horizontal < 0f)
+        {
+            pMachine.tryStateChange(PlayerState.walkingBackward);
+        }
+        else if (horizontal > 0f)
+        {
+            pMachine.tryStateChange(PlayerState.walkingForward);
+        }
+
+        float vertical = Input.GetAxis("Vertical");
+        if (vertical < 0f)
+        {
+            pMachine.tryStateChange(PlayerState.walkingLeft);
+        }
+        else if (vertical > 0f)
+        {
+            pMachine.tryStateChange(PlayerState.walkingRight);
+        }
 
         float jump = Input.GetAxis("Jump");
         if (jump > 0.0f)
         {
             pMachine.tryStateChange(PlayerState.jump);
         }
+
     }
+
 }
