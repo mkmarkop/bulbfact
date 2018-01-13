@@ -57,13 +57,15 @@ public class Inventory : MonoBehaviour {
 	}
 
 	void Update() {
-		if (Input.GetKeyDown(KeyCode.K)) {
-			NextItem ();
+        if (Input.GetButtonDown("Select")) {
+            float value = Input.GetAxisRaw("Select");
+            if (value < 0) {
+                PreviousItem();
+            } else {
+                NextItem();
+            }
 			ChangeIcon ();
-		} else if (Input.GetKeyDown(KeyCode.J)) {
-			PreviousItem ();
-			ChangeIcon ();
-		} else if (Input.GetKeyDown(KeyCode.E)) {
+		} else if (Input.GetButtonDown("Activate")) {
 			UseItem ();
 		}
 	}
