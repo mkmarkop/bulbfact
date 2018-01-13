@@ -12,11 +12,9 @@ public class Lever : Interactable {
 	public bool _turnedOn;
 
 
-	void Start () {
+	protected override void Start () {
+        base.Start();
 		_turnedOn = false;
-	}
-	
-	void Update () {
 	}
 		
 	public void toggleLever() {
