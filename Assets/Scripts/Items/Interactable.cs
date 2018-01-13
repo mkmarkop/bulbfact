@@ -22,12 +22,14 @@ public class Interactable : MonoBehaviour {
         _boundingBox = Instantiate(boundingPrefab, transform);
         _boundingBox.SetActive(false);
 
-        var parentBounds = GetComponent<Collider>().bounds.size;
-        var childBounds = _boundingBox.GetComponent<Renderer>().bounds.size;
+        var parentBounds = GetComponent<Collider>().bounds;
+        var localMin = transform.InverseTransformPoint(parentBounds.min);
+        var localMax = transform.InverseTransformPoint(parentBounds.max);
 
-        var scale = new Vector3(parentBounds.x / childBounds.x, parentBounds.y / childBounds.y, parentBounds.z / childBounds.z);
+        var scale = new Vector3(localMax.x - localMin.x, localMax.y - localMin.y, localMax.z - localMin.z);
+
         _boundingBox.transform.localScale = scale;
-
+        _boundingBox.transform.position = parentBounds.center;
     }
 
     public void EnableHighlight() {
