@@ -47,19 +47,25 @@ public class Inventory : MonoBehaviour {
 			return;
 		}
 
+		if (info.usedItem == null) {
+			return;
+		}
+
 		if (_items [_currentItem] == info.usedItem) {
 			RemoveItem (_currentItem);
 		}
 	}
 
 	void Update() {
-		if (Input.GetKeyDown(KeyCode.K)) {
-			NextItem ();
+        if (Input.GetButtonDown("Select")) {
+            float value = Input.GetAxisRaw("Select");
+            if (value < 0) {
+                PreviousItem();
+            } else {
+                NextItem();
+            }
 			ChangeIcon ();
-		} else if (Input.GetKeyDown(KeyCode.J)) {
-			PreviousItem ();
-			ChangeIcon ();
-		} else if (Input.GetKeyDown(KeyCode.E) && _totalItems > 0) {
+		} else if (Input.GetButtonDown("Activate")) {
 			UseItem ();
 		}
 	}
@@ -119,13 +125,14 @@ public class Inventory : MonoBehaviour {
 	}
 
 	void UseItem() {
-		if (_currentItem < 0 || _currentItem >= _totalItems)
-			return;
-
 		if (_focused == null)
 			return;
 
-		_focused.Receive (_items [_currentItem]);
+		if (_currentItem < 0 || _currentItem >= _totalItems) {
+			_focused.Receive (null);
+		} else {
+			_focused.Receive (_items [_currentItem]);
+		}
 	}
 
 	void RemoveItem(int index) {

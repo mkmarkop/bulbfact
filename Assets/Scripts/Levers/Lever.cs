@@ -2,21 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Lever : MonoBehaviour {
+public class Lever : Interactable {
 
 	public int leverValue;
 
 	public delegate void toggleHandler(int valueChange);
 	public static event toggleHandler onLeverToggle;
 
-	private bool _turnedOn;
+	public bool _turnedOn;
 
 
-	void Start () {
+	protected override void Start () {
+        base.Start();
 		_turnedOn = false;
-	}
-	
-	void Update () {
 	}
 		
 	public void toggleLever() {
@@ -39,5 +37,10 @@ public class Lever : MonoBehaviour {
 	public bool isTurnedOn() {
 		return _turnedOn;
 	}
-		
+
+	protected override void Interact ()
+	{
+		GetComponent<Lever> ().toggleLever ();
+		setReuseable ();
+	}
 }
