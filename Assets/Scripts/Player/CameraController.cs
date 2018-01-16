@@ -12,12 +12,12 @@ public class CameraController : MonoBehaviour {
 
     private void OnEnable()
     {
-        PlayerStateMachine.onStateChange += playerStateChangeListener;
+        //PlayerStateMachine.onStateChange += playerStateChangeListener;
     }
 
     private void OnDisable()
     {
-        PlayerStateMachine.onStateChange -= playerStateChangeListener;
+        //PlayerStateMachine.onStateChange -= playerStateChangeListener;
     }
 
     private void playerStateChangeListener(PlayerState ps)

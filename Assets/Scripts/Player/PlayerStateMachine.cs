@@ -106,25 +106,41 @@ public class PlayerStateMachine : MonoBehaviour {
         case PlayerState.glidingForward:
             isValid =
                     newState == PlayerState.grounded ||
-                    newState == PlayerState.fall;
+                    newState == PlayerState.fall ||
+                    newState == PlayerState.glidingBackward ||
+                    newState == PlayerState.glidingForward ||
+                    newState == PlayerState.glidingLeft ||
+                    newState == PlayerState.glidingRight;
                 break;
 
         case PlayerState.glidingBackward:
                 isValid = 
                     newState == PlayerState.grounded ||
-                    newState == PlayerState.fall;
+                    newState == PlayerState.fall ||
+                    newState == PlayerState.glidingBackward ||
+                    newState == PlayerState.glidingForward ||
+                    newState == PlayerState.glidingLeft ||
+                    newState == PlayerState.glidingRight;
             break;
 
         case PlayerState.glidingLeft:
                 isValid = 
                     newState == PlayerState.grounded ||
-                    newState == PlayerState.fall;
+                    newState == PlayerState.fall ||
+                    newState == PlayerState.glidingBackward ||
+                    newState == PlayerState.glidingForward ||
+                    newState == PlayerState.glidingLeft ||
+                    newState == PlayerState.glidingRight;
             break;
 
         case PlayerState.glidingRight:
             isValid = 
                     newState == PlayerState.grounded ||
-                    newState == PlayerState.fall;
+                    newState == PlayerState.fall ||
+                    newState == PlayerState.glidingBackward ||
+                    newState == PlayerState.glidingForward ||
+                    newState == PlayerState.glidingLeft ||
+                    newState == PlayerState.glidingRight;
             break;
 
             default:
@@ -193,7 +209,7 @@ public class PlayerStateMachine : MonoBehaviour {
 
     void glide()
     {
-        transform.Translate(playerForward * playerWalkSpeed * 0.0f * Time.deltaTime, Space.World);
+        transform.Translate(playerForward * playerWalkSpeed * 0.45f * Time.deltaTime, Space.World);
     }
 
     void faceTowards(Vector3 dir) {

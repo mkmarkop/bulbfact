@@ -444,7 +444,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraController: {fileID: 0}
   playerWalkSpeed: 6
-  playerJumpIntensity: 850
+  playerJumpIntensity: 2000
   currentState: 0
 --- !u!65 &818972538
 BoxCollider:
