@@ -392,6 +392,8 @@ GameObject:
   - component: {fileID: 395107025}
   - component: {fileID: 395107024}
   - component: {fileID: 395107028}
+  - component: {fileID: 395107029}
+  - component: {fileID: 395107030}
   m_Layer: 0
   m_Name: Trapdoor
   m_TagString: Untagged
@@ -459,8 +461,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 395107023}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -32.92, y: 29.21, z: -13.74}
-  m_LocalScale: {x: 9.585695, y: 0.24879487, z: 4.327394}
+  m_LocalPosition: {x: -35.84, y: 29.21, z: -13.74}
+  m_LocalScale: {x: 3.9442408, y: 0.24879487, z: 10.590535}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
@@ -471,6 +473,55 @@ Rigidbody:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 395107023}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!95 &395107029
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 395107023}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a0ce1213b32bb114fa1bbb9313b892ab, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &395107030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 395107023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e45a38716e23fd743b0c484e7fd23da6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leverSystemObject: {fileID: 156406847}
+--- !u!1 &461863346 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1393107121949508, guid: e98cd333964c96f41a357386c238e9e0,
+    type: 2}
+  m_PrefabInternal: {fileID: 1676821398}
+--- !u!54 &461863347
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 461863346}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -776,7 +827,7 @@ GameObject:
   - component: {fileID: 1191576754}
   - component: {fileID: 1191576753}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1184,12 +1235,12 @@ Prefab:
     - target: {fileID: 224375804269705160, guid: 04d0ffa609d14c34f953933ae1d988dc,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: -32.5
+      value: -414.84567
       objectReference: {fileID: 0}
     - target: {fileID: 224754293831309006, guid: 04d0ffa609d14c34f953933ae1d988dc,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: -32.5
+      value: -206.17282
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 04d0ffa609d14c34f953933ae1d988dc, type: 2}
