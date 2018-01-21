@@ -6,7 +6,7 @@ public abstract class ChargeableObject : MonoBehaviour {
 
     public float requiredCharge;
 
-    private float _currentCharge;
+    protected float _currentCharge;
     private static readonly float _maxCharge = 2000.0f;
 	
 	protected virtual void Start () {
