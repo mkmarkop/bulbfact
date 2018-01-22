@@ -652,7 +652,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4937986657473572, guid: 44cb064cb25f30446842c5714bdaea32, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 22.9
+      value: -6.3
       objectReference: {fileID: 0}
     - target: {fileID: 4937986657473572, guid: 44cb064cb25f30446842c5714bdaea32, type: 2}
       propertyPath: m_LocalPosition.y
@@ -660,7 +660,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4937986657473572, guid: 44cb064cb25f30446842c5714bdaea32, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -29.25
+      value: 108.2
       objectReference: {fileID: 0}
     - target: {fileID: 4937986657473572, guid: 44cb064cb25f30446842c5714bdaea32, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1171,12 +1171,12 @@ Prefab:
     - target: {fileID: 224116957127243402, guid: 04d0ffa609d14c34f953933ae1d988dc,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 355
+      value: 302
       objectReference: {fileID: 0}
     - target: {fileID: 224116957127243402, guid: 04d0ffa609d14c34f953933ae1d988dc,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 168.5
+      value: 143
       objectReference: {fileID: 0}
     - target: {fileID: 224116957127243402, guid: 04d0ffa609d14c34f953933ae1d988dc,
         type: 2}
@@ -2213,3 +2213,25 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1742252262}
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!1 &2135900339 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1540970497758828, guid: 06dcd85cfd159344eb5cd911bbd83dd1,
+    type: 2}
+  m_PrefabInternal: {fileID: 1930410244}
+--- !u!95 &2135900342
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2135900339}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cdb598058c37df341851d7282d24bed7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
