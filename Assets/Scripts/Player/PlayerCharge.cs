@@ -10,7 +10,7 @@ public class PlayerCharge : MonoBehaviour {
     public Slider chargeSlider;
     public Image Fill;  // assign in the editor the "Fill"
 
-    private float _currentCharge;
+    public float _currentCharge;
     public static readonly float maxCharge = 2000.0f;
 
     // Use this for initialization
