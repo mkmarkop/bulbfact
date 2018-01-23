@@ -1,8 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerCharge : MonoBehaviour {
+    public Color MaxChargeColor = Color.green;
+    public Color MediumChargeColor = Color.yellow;
+    public Color MinChargeColor = Color.red;
+    public Slider chargeSlider;
+    public Image Fill;  // assign in the editor the "Fill"
     public float _currentCharge;
     private static readonly float _maxCharge = 2000.0f;
 
@@ -13,8 +19,9 @@ public class PlayerCharge : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        chargeSlider.value = _currentCharge;
+        Fill.color = Color.Lerp(MinChargeColor, MaxChargeColor, (float) _currentCharge / _maxCharge);
+    }
 
     public void Charge(float receivedCharge) {
         _currentCharge += receivedCharge;
