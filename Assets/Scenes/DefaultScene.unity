@@ -1189,6 +1189,25 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300028, guid: f3fcc2c8fe3f3f44da2cb071e611b2cc, type: 3}
+--- !u!1 &1232818169 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1062180113761640, guid: 8788d1c1fedb86c48b759008a8b7d046,
+    type: 2}
+  m_PrefabInternal: {fileID: 1742252262}
+--- !u!114 &1232818170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1232818169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!4 &1318765679 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4662809837810202, guid: 9d69a78f620900b4e98b22faeab63a41,
@@ -1585,6 +1604,21 @@ Prefab:
       propertyPath: keypadCanvas
       value: 
       objectReference: {fileID: 2032493205}
+    - target: {fileID: 114706194580364792, guid: 8788d1c1fedb86c48b759008a8b7d046,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114706194580364792, guid: 8788d1c1fedb86c48b759008a8b7d046,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114706194580364792, guid: 8788d1c1fedb86c48b759008a8b7d046,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8788d1c1fedb86c48b759008a8b7d046, type: 2}
   m_IsPrefabParent: 0
