@@ -1164,6 +1164,7 @@ GameObject:
   - component: {fileID: 826422606}
   - component: {fileID: 826422605}
   - component: {fileID: 826422604}
+  - component: {fileID: 826422609}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1240,6 +1241,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &826422609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 826422603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8aa74d8854ff1594592e241b0e0f8e1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lookAt: {fileID: 1974756481}
 --- !u!4 &876253957 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4732083416403374, guid: 8788d1c1fedb86c48b759008a8b7d046,
@@ -1541,12 +1554,12 @@ Prefab:
     - target: {fileID: 224375804269705160, guid: 04d0ffa609d14c34f953933ae1d988dc,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: -32.5
+      value: -414.84567
       objectReference: {fileID: 0}
     - target: {fileID: 224754293831309006, guid: 04d0ffa609d14c34f953933ae1d988dc,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: -32.5
+      value: -206.17282
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 04d0ffa609d14c34f953933ae1d988dc, type: 2}
@@ -1992,7 +2005,7 @@ Prefab:
     - target: {fileID: 224123513123651638, guid: 12db6640b82ce2b4fa4c92d2edb59ba7,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -75
       objectReference: {fileID: 0}
     - target: {fileID: 224073310851432714, guid: 12db6640b82ce2b4fa4c92d2edb59ba7,
         type: 2}
@@ -2293,6 +2306,11 @@ Prefab:
 --- !u!1 &1974756473 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1155579785176802, guid: 44cb064cb25f30446842c5714bdaea32,
+    type: 2}
+  m_PrefabInternal: {fileID: 682492210}
+--- !u!4 &1974756481 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4937986657473572, guid: 44cb064cb25f30446842c5714bdaea32,
     type: 2}
   m_PrefabInternal: {fileID: 682492210}
 --- !u!4 &1992937674 stripped
