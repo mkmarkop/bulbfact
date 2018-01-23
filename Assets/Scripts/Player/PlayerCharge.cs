@@ -4,12 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerCharge : MonoBehaviour {
+
     public Color MaxChargeColor = Color.green;
     public Color MinChargeColor = Color.red;
     public Slider chargeSlider;
     public Image Fill;  // assign in the editor the "Fill"
+
     public float _currentCharge;
-    private static readonly float _maxCharge = 2000.0f;
+    public static readonly float maxCharge = 2000.0f;
 
     // Use this for initialization
     void Start () {
@@ -24,8 +26,8 @@ public class PlayerCharge : MonoBehaviour {
 
     public void Charge(float receivedCharge) {
         _currentCharge += receivedCharge;
-        if (_currentCharge > _maxCharge) {
-            _currentCharge = _maxCharge;
+        if (_currentCharge > maxCharge) {
+            _currentCharge = maxCharge;
         }
     }
 
@@ -35,4 +37,8 @@ public class PlayerCharge : MonoBehaviour {
             _currentCharge = 0;
         }
     }
+
+	public float getCurrentCharge() {
+		return _currentCharge;
+	}
 }

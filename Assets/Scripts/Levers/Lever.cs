@@ -9,12 +9,16 @@ public class Lever : Interactable {
 	public delegate void toggleHandler(int valueChange);
 	public static event toggleHandler onLeverToggle;
 
-	public bool _turnedOn;
+	private bool _turnedOn;
 
+	private Animator _leverAnimator;
 
 	protected override void Start () {
         base.Start();
 		_turnedOn = false;
+
+		_leverAnimator = GetComponent<Animator> ();
+		_leverAnimator.SetBool ("TurnedOn", false);
 	}
 		
 	public void toggleLever() {
@@ -23,8 +27,10 @@ public class Lever : Interactable {
 		int valueChange;
 		if (_turnedOn) {
 			valueChange = leverValue;
+			_leverAnimator.SetBool ("TurnedOn", true);
 		} else {
 			valueChange = -leverValue;
+			_leverAnimator.SetBool ("TurnedOn", false);
 		}
 
 		// Is someone subscribed to lever toggling?
