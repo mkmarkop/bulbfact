@@ -10,7 +10,7 @@ public class PlayerCharge : MonoBehaviour {
     public Slider chargeSlider;
     public Image Fill;  // assign in the editor the "Fill"
 
-    public float _currentCharge;
+    private float _currentCharge;
     public static readonly float maxCharge = 2000.0f;
 
     // Use this for initialization
@@ -21,7 +21,7 @@ public class PlayerCharge : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         chargeSlider.value = _currentCharge;
-        Fill.color = Color.Lerp(MinChargeColor, MaxChargeColor, (float) _currentCharge / _maxCharge);
+        Fill.color = Color.Lerp(MinChargeColor, MaxChargeColor, (float) _currentCharge / maxCharge);
     }
 
     public void Charge(float receivedCharge) {
