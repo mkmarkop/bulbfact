@@ -5,7 +5,7 @@ using UnityEngine;
 public class PoolOfWater : MonoBehaviour {
 
 	public GameObject player;
-	public Vector3 repositionLocation;
+	public Transform repositionLocation;
 
 	private PlayerStateMachine _playerStateMachine;
 	private float _initialWalkSpeed;
@@ -39,7 +39,7 @@ public class PoolOfWater : MonoBehaviour {
 	// requires that he Collider of the object using this script has Is Trigger set to true;
 	void OnTriggerEnter(Collider other) {
 		if (_playerCharge.getCurrentCharge() > 0.0f) {
-			if (other.gameObject == player && _playerStunned == false) {
+            if (other.CompareTag("Player") && _playerStunned == false) {
 				_playerCharge.Discharge (PlayerCharge.maxCharge);
 
 				_playerStunned = true;
@@ -49,6 +49,6 @@ public class PoolOfWater : MonoBehaviour {
 	}
 
 	private void repositionPlayer() {
-		player.transform.localPosition = repositionLocation;
+		player.transform.position = repositionLocation.position;
 	}
 }
