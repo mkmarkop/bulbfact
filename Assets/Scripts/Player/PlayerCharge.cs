@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class PlayerCharge : MonoBehaviour {
     public Color MaxChargeColor = Color.green;
-    public Color MediumChargeColor = Color.yellow;
     public Color MinChargeColor = Color.red;
     public Slider chargeSlider;
     public Image Fill;  // assign in the editor the "Fill"
