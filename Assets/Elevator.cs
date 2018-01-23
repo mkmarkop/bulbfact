@@ -3,13 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Elevator : MonoBehaviour {
+[RequireComponent(typeof(Collider))]
+public class Elevator : Interactable {
     private Animator _animator;
     private BoxCollider _boxCollider;
     internal bool _open;
 
     // Use this for initialization
     void Start () {
+        base.Start();
         _animator = GetComponent<Animator>();
         _boxCollider = GetComponent<BoxCollider>();
         _open = false;
@@ -21,23 +23,14 @@ public class Elevator : MonoBehaviour {
         _animator.SetBool("open", true);
     }
 
-    void OnTriggerStay(Collider other)
+    protected override void Interact()
     {
-        if (!other.CompareTag("Player")) { return; }
-        if (Input.GetButtonDown("Activate"))
-        {
-            if (isOpen()) { return; }
-            Open();
-        }
+        if (isOpen()) { return; }
+        Open();
     }
 
     bool isOpen()
     {
         return _open;
     }
-
-    // Update is called once per frame
-    void Update () {
-		
-	}
 }

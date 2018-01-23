@@ -244,6 +244,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114961915013967730, guid: c6c5a991947ebd54f91a50b895d6aea6,
+        type: 2}
+      propertyPath: boundingPrefab
+      value: 
+      objectReference: {fileID: 1436463957564782, guid: 38c11fa4ba6dbee47a3b15603c025986,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c6c5a991947ebd54f91a50b895d6aea6, type: 2}
   m_IsPrefabParent: 0
@@ -928,12 +934,12 @@ Prefab:
     - target: {fileID: 224116957127243402, guid: 04d0ffa609d14c34f953933ae1d988dc,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 302
+      value: 302.5
       objectReference: {fileID: 0}
     - target: {fileID: 224116957127243402, guid: 04d0ffa609d14c34f953933ae1d988dc,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 143
+      value: 135
       objectReference: {fileID: 0}
     - target: {fileID: 224116957127243402, guid: 04d0ffa609d14c34f953933ae1d988dc,
         type: 2}
@@ -1053,12 +1059,12 @@ Prefab:
     - target: {fileID: 224375804269705160, guid: 04d0ffa609d14c34f953933ae1d988dc,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: -32.5
+      value: -414.84567
       objectReference: {fileID: 0}
     - target: {fileID: 224754293831309006, guid: 04d0ffa609d14c34f953933ae1d988dc,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: -32.5
+      value: -206.17282
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 04d0ffa609d14c34f953933ae1d988dc, type: 2}
@@ -1349,12 +1355,12 @@ Prefab:
     - target: {fileID: 224681527905164626, guid: 12db6640b82ce2b4fa4c92d2edb59ba7,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 302
+      value: 302.5
       objectReference: {fileID: 0}
     - target: {fileID: 224681527905164626, guid: 12db6640b82ce2b4fa4c92d2edb59ba7,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 143
+      value: 135
       objectReference: {fileID: 0}
     - target: {fileID: 224681527905164626, guid: 12db6640b82ce2b4fa4c92d2edb59ba7,
         type: 2}
