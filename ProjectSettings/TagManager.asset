@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - StandingTrigger
+  - Floor
   layers:
   - Default
   - TransparentFX
