@@ -7,6 +7,7 @@ public class KeyLockedDoors : Interactable {
 
 	// Use this for initialization
 	void Start () {
+        base.Start();
         _animator = GetComponent<Animator>();
 	}
 

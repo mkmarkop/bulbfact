@@ -7,7 +7,7 @@ public class LeverSystem : MonoBehaviour {
 	public int targetLeverValue;
 
 	private int _currentLeverValue;
-	public bool _systemEnabled;
+	private bool _systemEnabled;
 
 	// public LeverSystemListener listener
 

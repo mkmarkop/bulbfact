@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Keypad : MonoBehaviour {
-    public DoorScript Door;
+    public DoorForKeypadScript Door;
     public int Key;
     public Canvas keypadCanvas;
     private string enteredKey;

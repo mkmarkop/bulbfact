@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
-public class DoorScript : MonoBehaviour {
+public class DoorForKeypadScript : MonoBehaviour {
 
     private Animator _animator;
     private bool _open;
