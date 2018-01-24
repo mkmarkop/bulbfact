@@ -28,8 +28,9 @@ public class Discharger : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         if (_playerStateMachine.GetCurrentState() == PlayerState.discharging) {
-            _playerCharge.Discharge(_dischargeSpeed);
-            chargeableObject.charge(_dischargeSpeed);
+            chargeableObject.charge(
+                _playerCharge.Discharge(_dischargeSpeed)
+            );
         }
     }
 }

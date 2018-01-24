@@ -8,14 +8,15 @@ public class ChargeableDoors : ChargeableObject {
     public Text displayRequiredCharge;
 
     // Use this for initialization
-    void Start () {
+    protected override void Start () {
+        base.Start();
         _animator = GetComponent<Animator>();
         displayRequiredCharge.enabled = true;
         displayRequiredCharge.text = string.Format("{0}/{1}", _currentCharge, requiredCharge);
     }
 	
 	// Update is called once per frame
-	void Update () {
+    protected override void Update () {
 		if (isCharged()) { executeAction(); }
         if (!isCharged())
         {

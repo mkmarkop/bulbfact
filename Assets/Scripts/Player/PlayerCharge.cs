@@ -31,11 +31,14 @@ public class PlayerCharge : MonoBehaviour {
         }
     }
 
-    public void Discharge(float sentCharge) {
+    public float Discharge(float sentCharge) {
+        float prev = _currentCharge;
         _currentCharge -= sentCharge;
         if (_currentCharge < 0.0f) {
             _currentCharge = 0;
         }
+
+        return prev - _currentCharge;
     }
 
 	public float getCurrentCharge() {
